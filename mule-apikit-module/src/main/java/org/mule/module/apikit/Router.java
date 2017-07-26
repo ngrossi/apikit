@@ -87,7 +87,7 @@ public class Router implements  Processor, FlowConstructAware, Initialisable
                 Event.Builder eventBuilder = Event.builder(event);
                 eventBuilder.addVariable(config.getOutboundHeadersMapName(), new HashMap<>());
 
-        HttpRequestAttributes attributes = ((HttpRequestAttributes)event.getMessage().getAttributes().getValue());
+                HttpRequestAttributes attributes = ((HttpRequestAttributes)event.getMessage().getAttributes().getValue());
 
                 String path = UrlUtils.getRelativePath(attributes.getListenerPath(), attributes.getRequestPath());
                 path = path.isEmpty() ? "/" : path;
