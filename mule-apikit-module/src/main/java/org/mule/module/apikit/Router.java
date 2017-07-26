@@ -12,10 +12,10 @@ import static org.mule.runtime.core.api.processor.MessageProcessors.processWithC
 import static reactor.core.publisher.Flux.from;
 
 import org.mule.extension.http.api.HttpRequestAttributes;
+import org.mule.module.apikit.api.UrlUtils;
 import org.mule.module.apikit.api.exception.BadRequestException;
 import org.mule.module.apikit.exception.MethodNotAllowedException;
 import org.mule.module.apikit.api.exception.MuleRestException;
-import org.mule.module.apikit.exception.NotAcceptableException;
 import org.mule.module.apikit.helpers.AttributesHelper;
 import org.mule.module.apikit.helpers.EventHelper;
 import org.mule.module.apikit.api.uri.ResolvedVariables;
@@ -28,10 +28,8 @@ import org.mule.raml.interfaces.model.IResource;
 import org.mule.runtime.api.exception.MuleException;
 import org.mule.runtime.api.lifecycle.Initialisable;
 import org.mule.runtime.api.lifecycle.InitialisationException;
-import org.mule.runtime.core.DefaultEventContext;
 import org.mule.runtime.core.api.DefaultMuleException;
 import org.mule.runtime.core.api.Event;
-import org.mule.runtime.core.api.config.RuntimeConfigurationException;
 import org.mule.runtime.core.api.construct.Flow;
 import org.mule.runtime.core.api.construct.FlowConstruct;
 import org.mule.runtime.core.api.construct.FlowConstructAware;
@@ -40,9 +38,9 @@ import org.mule.runtime.core.api.exception.TypedException;
 import org.mule.runtime.core.api.processor.Processor;
 
 import java.io.IOException;
+import java.net.URI;
 import java.util.HashMap;
 import java.util.Optional;
-import java.util.concurrent.ExecutionException;
 
 import javax.inject.Inject;
 
